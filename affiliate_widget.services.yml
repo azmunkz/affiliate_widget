@@ -2,4 +2,14 @@ services:
   affiliate_widget.installer_service:
     class: Drupal\affiliate_widget\Install\InstallerService
     arguments:
-      - ['@entity_type.manager', '@module_handler']
+      - '@entity_type.manager'
+      - '@module_handler'
+
+  affiliate_widget.matcher_service:
+    class: Drupal\affiliate_widget\Service\AffiliateMatcherService
+    arguments:
+      - '@entity_type.manager'
+      - '@http_client'
+      - '@config.factory'
+      - '@key.repository'
+      - '@logger.channel.affiliate_widget'
